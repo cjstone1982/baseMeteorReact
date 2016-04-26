@@ -50,3 +50,5 @@ juliancwirko:s-alert-bouncyflip
 juliancwirko:s-alert-stackslide
 
 #reactrouter:react-router
+std:accounts-ui
+react-meteor-data
