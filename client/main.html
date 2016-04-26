@@ -1,7 +1,23 @@
 <head>
     <title>首页</title>
+    <meta content="width=device-width, initial-scale=1 ,maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport" >
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta content="fullscreen=yes,preventMove=no" name="ML-Config">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="apple-touch-startup-image" href="youxinyi_logo.png" />
+	<meta name="format-detection" content="telephone=no; email=no" />
 </head>
 
 <body>
+
     <div id="render-target"></div>
+    
+   	<div class="login-header">
+		{{#if currentUser}}
+			{{currentUser.username}} <a class="setInfo" href="#">设置个人信息</a>
+		{{/if}}
+		{{> loginButtons align="right"}}
+	</div>
+			
 </body>

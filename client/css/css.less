@@ -1,5 +1,8 @@
 body{margin: 0; font-family: 'STHeiti','微软雅黑'; -webkit-font-smoothing: antialiased;  -webkit-text-size-adjust:none; }
 body, dl, dd, h 1, h 2, h 3, h 4, h 5, h 6, p, form{ margin: 0; }
+html{
+	overflow-Y: scroll;
+}
 ol,li,ul{ margin: 0; padding: 0; }
 ol,li{list-style: none; }
 button{display: block; outline:none; font-weight: bold; -webkit-tap-highlight-color: transparent;}
@@ -32,7 +35,9 @@ a:hover { color:#000; }
  
 /*hack*/
 .word { word-break:break-all; }/*英文强制换行*/
-.width_fixed { white-space:nowrap; text-overflow:ellipsis; overflow: hidden; }/*超出宽度的部分显示为...*
+.width_fixed { white-space:nowrap; text-overflow:ellipsis; overflow: hidden; }/*超出宽度的部分显示为...*/
+
+.blank50{height:50px;}
 
 /*颜色*/
 @mainColor1:#ff3300;
@@ -48,6 +53,7 @@ a:hover { color:#000; }
 	background: @bgcolor; border:none; border-radius: @radius;
 	font-weight: bold; font-size: @size; cursor: pointer;
 }
+
 /*调用demo 
 .button('宽度','高度','字体大小','颜色','圆角');
 */
@@ -105,11 +111,18 @@ button{
 	}
 }
 
+.login-header{
+	position: fixed; top:12px; right:250px; z-index: 9999;  text-decoration: none !important;
+	.login-link-text{color:#fff; }
+}
 
+#render-target{min-width: 640px; }
 
+/*头部*/
 header{width: 100%; height:50px; position: fixed; right: 0; left: 0; top: 0;
 	.bg{ width: 100%; position: absolute; z-index: -1; top:0; left:0; height:50px; background: #000; 
 		.opacity(70);}
+	.header-active{background: #333; color: green;}
 	
 	@media screen and (min-width: 600px) { /*当屏幕尺寸大于600px时*/
 		.mobile{display: none;}
@@ -128,6 +141,28 @@ header{width: 100%; height:50px; position: fixed; right: 0; left: 0; top: 0;
 			.reg{ position: absolute; right:0; top:0;
 				.login-link-text{color:#fff;}
 				.setInfo{color:#fff; margin-right:1em;}
+			}
+			.user-nav{ position: absolute; right:20px; top:5px;
+				.face{ border:2px solid #666; 
+					width: 40px; height: 40px; border-radius: 100%; background: url('images/noface.png'); 
+					background-size:100% 100%;
+				}
+				.face:hover{
+					 border:2px solid orange; cursor: pointer; 
+				}
+				.user-nav-list{ background: #fff; border:1px solid #dedede; padding:0 0px; margin-top: 5px; border-radius: 3px;
+					width: 150px; position: absolute; left:-100px; top:38px;
+					ul{ padding:10px 0;
+						li{font-size: 14px; height: 30px; line-height: 30px; text-indent: 3em;
+							a{
+								width: 100%; display: block;
+							}
+							a:hover{
+								background: orange; color:#fff; 
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -154,13 +189,66 @@ header{width: 100%; height:50px; position: fixed; right: 0; left: 0; top: 0;
 	}
 }
 
+/*注册登录页面*/
+.accounts-ui{ border:1px solid #dedede; width: 500px; margin:100px auto 0; padding: 20px 50px;
+	.fields{ line-height: 55px; padding-bottom:20px;  overflow: hidden; clear:both;
+		.field{ clear:both; 
+			label{
+				width: 130px; padding-right:20px; float: left; text-align: right; display: block;
+			}
+			input{
+				width: 340px; height: 35px; line-height: 35px; margin-top: 10px; float: left; border:1px solid #dedede;
+			}
+		}
+	}
+	.buttons{
+		a{font-size: 14px; color:#666; float: left; margin:30px 0 0 50px;}
+	}
+	.password-or-service{clear:both;}
+	.social-buttons{
+		button{
+			margin-bottom: 10px;
+		}
+	}
+	button{width: 70%; margin:0 auto;}
+}
 
+.wrap{ width:800px; margin:0 auto; }
 
+.article{ width: 95%; margin:0 auto; background: #fff; border-bottom: 1px dashed #dedede;
+	.list-top{ 
+		font-size: 12px;
+	}
+	h4.title{
+		font-size: 20px; font-weight: normal;
+	}
+	.list-footer{
+		font-size: 12px;
+		a{margin-right:1em; color:#999;}
+	}
+}
+
+.category{ width: 100%; padding:10px 0; overflow: hidden;
+	ul{
+		li{ 
+			a{ display: block;border:1px solid #dedede; margin-right:10px; border-radius: 3px; float: left; 
+				padding:3px 10px 5px 10px; font-size: 13px;
+			}
+		}
+	}
+}
+
+.category-active{background: orange; border:1px solid orange !important; color: #fff !important;}
+
+/*焦点图*/
+.banner{ width: 100%;  min-height:300px; background: url('images/banner01.jpg') no-repeat; background-size:100% auto;}
+
+/*底部*/
 footer{
 	position: fixed; bottom:0; left:0; text-align: center; width: 100%;
 }
 
-.banner{ width: 100%; position: absolute; top:0; z-index: -1; height:800px; background: url('/images/banner.jpg') no-repeat; background-size:100% auto contain;}
+
 
 
 
